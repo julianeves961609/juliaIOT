@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Ambientes - IoT </title>
+    <style>
+    :root {
+        --cor-principal: #006aff;
+        --cor-fundo: #ecf0f1;
+        --cor-branca: #ffffff;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--cor-fundo);
+        color: var(--cor-principal);
+    }
+
+    header {
+        background-color: var(--cor-principal);
+        color: var(--cor-branca);
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    header img {
+        height: 80px;
+        margin-top: 10px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        background-color: var(--cor-principal);
+        flex-wrap: wrap;
+    }
+
+    .menu a {
+        padding: 14px 20px;
+        text-decoration: none;
+        color: var(--cor-branca);
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .menu a:hover {
+        background-color: #2980b9;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: var(--cor-branca);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+        /* Layout em colunas */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+    }
+
+    .sensor {
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #f9f9f9;
+    }
+
+    .sensor h3 {
+        margin-bottom: 10px;
+        color: var(--cor-principal);
+    }
+
+    iframe {
+        width: 100%;
+        height: 250px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        display: block;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+</style>
+    <script>
+        function showEnvironment(env) {
+            const environments = document.getElementsByClassName('environment');
+            for (let i = 0; i < environments.length; i++) {
+                environments[i].classList.add('hidden');
+            }
+            document.getElementById(env).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-seedling"></i> Monitoramento de Ambientes - IoT</h1>
+        <img src="imagens/logoIFFAR.png" alt="Instituto Federal Farroupilha - Campus Panambi" />
+    </header>
+
+
+    <section id="ambiente1" class="container environment">
+        <h2>Prédio 1</h2>
+
+        <div class="sensor">
+            <h3>Sensor 1 - Distância</h3>
+            <iframe src="https://thingspeak.com/channels/1883746/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&title=Umidade+%25&type=line"></iframe>
+        </div>
+
+        <div class="sensor">
+            <h3>Sensor 2 - Temperatura</h3>
+            <iframe src="https://thingspeak.com/channels/3047286/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        </div>
+
+        <div class="sensor">
+            <h3>Sensor 3 - Umidade</h3>
+            <iframe src="https://thingspeak.com/channels/3047286/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        </div>
+</body>
+</html>
